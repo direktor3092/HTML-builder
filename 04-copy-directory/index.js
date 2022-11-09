@@ -6,6 +6,8 @@ const { mkdir, copyFile, readdir, rm } = require('fs/promises');
 
 const copyDir = async () =>{
     try {
+    let toFile = path.join(__dirname, 'files-copy');
+    await fs.promises.rm(toFile, { recursive: true, force: true });
     await fs.promises.mkdir(path.join(__dirname, 'files-copy'), { recursive: true});//create new dir
     const folder  = path.join(__dirname, 'files');//get files dir
     const files = await fs.promises.readdir(folder, {withFileTypes: true});//get files
